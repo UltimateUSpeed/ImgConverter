@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr-FR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Image Converter by USpeed&copy;</title>
+    <script type="text/javascript">"use strict";function _typeof(a){return _typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(b){return typeof b
+}:function(b){return b&&"function"==typeof Symbol&&b.constructor===Symbol&&b!==Symbol.prototype?"symbol":typeof b
+},_typeof(a)}function _instanceof(b,a){if(a!=null&&typeof Symbol!=="undefined"&&a[Symbol.hasInstance]){return !!a[Symbol.hasInstance](b)
+}else{return b instanceof a}}function _classCallCheck(a,b){if(!_instanceof(a,b)){throw new TypeError("Cannot call a class as a function")
+}}function _defineProperties(d,b){for(var a=0;a<b.length;a++){var c=b[a];c.enumerable=c.enumerable||false;
+c.configurable=true;if("value" in c){c.writable=true}Object.defineProperty(d,_toPropertyKey(c.key),c)
+}}function _createClass(c,a,b){if(a){_defineProperties(c.prototype,a)}if(b){_defineProperties(c,b)}Object.defineProperty(c,"prototype",{writable:false});
+return c}function _toPropertyKey(b){var a=_toPrimitive(b,"string");return"symbol"==_typeof(a)?a:a+""}function _toPrimitive(b,c){if("object"!=_typeof(b)||!b){return b
+}var d=b[Symbol.toPrimitive];if(void 0!==d){var a=d.call(b,c||"default");if("object"!=_typeof(a)){return a
+}throw new TypeError("@@toPrimitive must return a primitive value.")}return("string"===c?String:Number)(b)
+}
+/*! *****************************************************************************
+Copyright (c) 2024 USpeed
+https://github.com/UltimateUSpeed
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+****************************************************************************** */
+var Converter=function(){function b(){_classCallCheck(this,b)
+}return _createClass(b,null,[{key:"process",value:function g(j,n){var m=b;var h=document.getElementById(j);
+if(h!=null&&h.files!=null&&h.files.length>0){var l=["jpeg","png","gif","webp"];var o=document.getElementById(n);
+var k=o!=null?(""+o.value).toLowerCase():"";var p=l.indexOf(k)>-1?k:l[0];var i=h.files[0];m.readFile(i,function(q){m.loadImage(q,function(r){m.renderToCanvas(r,p,function(t){var s=(i.name!=null?""+i.name:"").split(".");
+if(s.length==0){s.push("image")}s.push(p);console.log("Filename: ",s);console.log("Data: ",t);m.startDownload(t,s.join("."))
+})})})}}},{key:"preview",value:function f(j,h){var m=b;var l=document.getElementById(h);if(l!=null){l.style.display="none";
+var k=document.getElementById(j);if(k!=null&&k.files!=null&&k.files.length>0){var i=k.files[0];m.readFile(i,function(n){l.src=n;
+l.style.display="inline-block"})}}}},{key:"readFile",value:function a(j,i){if(typeof i=="function"&&j!=null&&_instanceof(j,File)){var h=new FileReader();
+h.onload=function(){i(h.result)};h.readAsDataURL(j)}}},{key:"loadImage",value:function e(j,h){if(typeof h=="function"){var i=new Image();
+i.onload=function(){h(i)};i.src=j}}},{key:"renderToCanvas",value:function d(j,m,h){if(j!=null&&_instanceof(j,HTMLImageElement)&&m!=null&&typeof h=="function"){var k=document.createElement("canvas");
+var i=k.getContext("2d");k.width=j.width;k.height=j.height;i.drawImage(j,0,0);var l=k.toDataURL("image/"+m);
+h(l)}}},{key:"startDownload",value:function c(j,i){var h=document.createElement("a");h.href=j;h.download=i;
+h.click();h.remove()}}])}();
+</script>
+    <style type="text/css">/*! *****************************************************************************
+Copyright (c) 2024 USpeed
+https://github.com/UltimateUSpeed
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+****************************************************************************** */*{--bg-layer1:#191919;--bg-layer2:#222;--bg-layer3:#333;--brd:#ccc;--btn:#009;--title:#09F;--border-radius:.5rem;font-family:Verdana,Arial,Helvetica,sans-serif;box-sizing:border-box;color:#DDD}
+html{font-size:1em}body{background:var(--bg-layer1)}form{max-width:25rem;padding:1rem;background:var(--bg-layer2);margin:auto;border-radius:var(--border-radius)}
+.preview{display:block;text-align:center;height:5rem}.previewImage{cursor:pointer;display:none;width:5rem;height:5rem;border:1px solid var(--brd);border-radius:var(--border-radius)}
+.formLabel{display:block;width:100%;margin:10px 0;font-weight:bold;color:var(--title)}.selectFmt,.inputFile,.submitBtn{display:block;width:100%;padding:.75rem;border:0;background:var(--bg-layer3);border-radius:var(--border-radius);cursor:pointer}
+.submitBtn{font-weight:bold;margin-top:2rem;background:var(--btn);border:1px solid var(--brd)}.copyright{font-size:.6rem;text-align:right;padding-top:.5rem;font-style:italic}
+</style>
+  </head>
+  <body>
+    <form onsubmit="Converter.process('_ID_file', '_ID_format'); return false;">
+      <div class="preview"><label for="_ID_file"><img id="_ID_preview" class="previewImage" /></label></div>
+      <label class="formLabel" for="_ID_file">Image à convertir</label>
+      <input class="inputFile" type="file" id="_ID_file" accept="image/*" required="true" onchange="Converter.preview('_ID_file', '_ID_preview');" />
+      <label class="formLabel" for="_ID_format">Format de sortie</label>
+      <select class="selectFmt" id="_ID_format">
+        <option value="png" selected>PNG</option>
+        <option value="jpeg">JPEG</option>
+        <option value="gif">GIF</option>
+        <option value="webp">WEBP</option>
+      </select>
+      <button type="submit" class="submitBtn">&#128171; Convertir</button>
+      <div class="copyright">
+        Image Converter by USpeed&copy;<br />
+        <a href="https://github.com/UltimateUSpeed">https://github.com/UltimateUSpeed</a>
+      </div>
+    </form>
+  </body>
+</html>
